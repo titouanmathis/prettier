@@ -37,6 +37,7 @@ exports[`ignore-unknown check (stderr) 1`] = `
 
 exports[`ignore-unknown check (stdout) 1`] = `
 "Checking formatting...
+  Replace =······· with ·= (javascript.js:1)
 "
 `;
 

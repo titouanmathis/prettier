@@ -46,11 +46,13 @@ exports[`output with --check + unformatted differs when piped (stderr) 2`] = `
 
 exports[`output with --check + unformatted differs when piped (stdout) 1`] = `
 "Checking formatting...
-unformatted.js"
+unformatted.js  Replace ·····=······1; with =·1;⏎ (unformatted.js:1)
+"
 `;
 
 exports[`output with --check + unformatted differs when piped (stdout) 2`] = `
 "Checking formatting...
+  Replace ·····=······1; with =·1;⏎ (unformatted.js:1)
 "
 `;
 

@@ -14,11 +14,13 @@ exports[`--checks works in CI just as in a non-TTY mode (stderr) 2`] = `
 
 exports[`--checks works in CI just as in a non-TTY mode (stdout) 1`] = `
 "Checking formatting...
+  Replace ·····=······1; with =·1;⏎ (unformatted.js:1)
 "
 `;
 
 exports[`--checks works in CI just as in a non-TTY mode (stdout) 2`] = `
 "Checking formatting...
+  Replace ·····=······1; with =·1;⏎ (unformatted.js:1)
 "
 `;
 

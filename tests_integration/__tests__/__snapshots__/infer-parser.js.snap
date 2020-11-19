@@ -9,6 +9,7 @@ exports[`--check with unknown path and no parser multiple files (stderr) 1`] = `
 
 exports[`--check with unknown path and no parser multiple files (stdout) 1`] = `
 "Checking formatting...
+  Replace ··(····) with (); (foo.js:1)
 "
 `;
 
@@ -42,6 +43,7 @@ exports[`--write and --check with unknown path and no parser multiple files (std
 
 exports[`--write and --check with unknown path and no parser multiple files (stdout) 1`] = `
 "Checking formatting...
+  Replace ··(····) with (); (foo.js:1)
 "
 `;
 

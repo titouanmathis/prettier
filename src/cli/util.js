@@ -6,6 +6,10 @@ const readline = require("readline");
 const camelCase = require("camelcase");
 const dashify = require("dashify");
 
+const {
+  showInvisibles,
+  generateDifferences,
+} = require("prettier-linter-helpers");
 const chalk = require("chalk");
 const stringify = require("fast-json-stable-stringify");
 const fromPairs = require("lodash/fromPairs");
@@ -551,7 +555,34 @@ function formatFiles(context) {
 
     if (isDifferent) {
       if (context.argv.check) {
+        const { INSERT, DELETE, REPLACE } = generateDifferences;
+        const differences = generateDifferences(input, output);
+
+        const formatCodeModification = (code = "") =>
+          chalk.yellow(showInvisibles(code));
+
         context.logger.warn(filename);
+        differences.forEach(({ offset, operation, deleteText, insertText }) => {
+          const deleteCode = formatCodeModification(deleteText);
+          const insertCode = formatCodeModification(insertText);
+          const line = input.slice(0, offset).split("\n").length;
+          const info = chalk.grey(`(${filename}:${line})`);
+
+          let message;
+          switch (operation) {
+            case INSERT:
+              message = `Insert ${insertCode}`;
+              break;
+            case DELETE:
+              message = `Delete ${deleteCode}`;
+              break;
+            case REPLACE:
+              message = `Replace ${deleteCode} with ${insertCode}`;
+              break;
+          }
+
+          context.logger.log(`  ${message} ${info}`);
+        });
       } else if (context.argv["list-different"]) {
         context.logger.log(filename);
       }
